@@ -4,9 +4,20 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.brk2outside.common</groupId>
 	<artifactId>common-util-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>common-util</name>
+	<developers>
+		<developer>
+			<name>Shenglong</name>
+			<email>liushenglong_8597@outlook.com</email>
+		</developer>
+	</developers>
+	<url>https://github.com/Ldsystem/common-util</url>
+	<scm>
+		<url>https://github.com/Ldsystem/common-util</url>
+		<tag>json,type cast</tag>
+	</scm>
 	<description>common-util</description>
 	<properties>
 		<java.version>8</java.version>
@@ -44,5 +55,41 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.4.1</version>
+						<executions>
+							<execution>
+								<id>attach-javadoc</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>3.2.1</version>
+						<executions>
+							<execution>
+								<id>attach-source</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
