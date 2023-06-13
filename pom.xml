@@ -137,6 +137,7 @@
 										<closeRepository>false</closeRepository>
 										<releaseRepository>false</releaseRepository>
 										<stagingRepositories>target/staging-deploy</stagingRepositories>
+										<applyMavenCentralRules>true</applyMavenCentralRules>
 										<sourceJar>false</sourceJar>
 										<javadocJar>false</javadocJar>
 									</maven-central>
