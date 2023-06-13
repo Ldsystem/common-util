@@ -63,7 +63,7 @@
 	</dependencyManagement>
 
 	<modules>
-<!--		<module>json</module>-->
+		<module>json</module>
 		<module>lang</module>
 	</modules>
 
