@@ -35,7 +35,7 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>cn.brk2outside.common</groupId>
+				<groupId>cn.brk2outside</groupId>
 				<artifactId>lang</artifactId>
 				<version>${project.version}</version>
 			</dependency>
