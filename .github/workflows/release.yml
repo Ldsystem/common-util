@@ -18,13 +18,7 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./mvnw
       - name: Echo Environment Variables
-        run: |
-          echo $JRELEASER_NEXUS2_USERNAME
-          echo $JRELEASER_NEXUS2_PASSWORD
-          echo $JRELEASER_GPG_PASSPHRASE
-          echo $JRELEASER_GPG_SECRET_KEY
-          echo $JRELEASER_GPG_PUBLIC_KEY
-          echo $JRELEASER_GITHUB_TOKEN
+        run: echo ${{ secrets.JRELEASER_NEXUS2_USERNAME }}
       - name: Publish package
         env:
           JRELEASER_NEXUS2_USERNAME: ${{ secrets.JRELEASER_NEXUS2_USERNAME }}
