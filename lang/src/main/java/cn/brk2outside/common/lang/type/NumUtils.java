@@ -1,6 +1,6 @@
 package cn.brk2outside.common.lang.type;
 
-import org.springframework.util.StringUtils;
+import cn.brk2outside.common.lang.StrUtil;
 
 import java.text.DecimalFormat;
 import java.util.Optional;
@@ -37,7 +37,7 @@ public class NumUtils {
 
     public static Optional<Long> parseHexString(String hex) {
         return Optional.ofNullable(hex)
-                .filter(StringUtils::hasText)
+                .filter(StrUtil::hasWord)
                 .map(str -> str.replaceFirst("0?[Xx]?0*", ""))
                 .map(x -> Long.parseLong(x, 16));
     }

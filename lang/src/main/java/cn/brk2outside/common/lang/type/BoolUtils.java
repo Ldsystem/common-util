@@ -1,6 +1,6 @@
 package cn.brk2outside.common.lang.type;
 
-import org.springframework.util.StringUtils;
+import cn.brk2outside.common.lang.StrUtil;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class BoolUtils {
         return obj instanceof Boolean? Optional.of((Boolean) obj)
                 : Optional.ofNullable(obj)
                 .map(Object::toString)
-                .filter(StringUtils::hasText)
+                .filter(StrUtil::hasWord)
                 .map(String::toUpperCase)
                 .filter(str -> !NULL_VALUE_SYMBOLS.contains(str))
                 .map(FALSE_VALUE_SYMBOLS::contains)

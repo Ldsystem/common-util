@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>cn.brk2outside.common</groupId>
+	<groupId>cn.brk2outside</groupId>
 	<artifactId>common-util-parent</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
@@ -18,6 +18,12 @@
 		<url>https://github.com/Ldsystem/common-util</url>
 		<tag>json,type cast</tag>
 	</scm>
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>https://github.com/Ldsystem/common-util/blob/master/LICENSE</url>
+		</license>
+	</licenses>
 	<description>common-util</description>
 	<properties>
 		<java.version>8</java.version>
@@ -56,6 +62,11 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<modules>
+		<module>json</module>
+		<module>lang</module>
+	</modules>
+
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -64,7 +75,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.4.1</version>
+						<version>3.5.0</version>
 						<executions>
 							<execution>
 								<id>attach-javadoc</id>
@@ -77,7 +88,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>3.2.1</version>
+						<version>3.3.0</version>
 						<executions>
 							<execution>
 								<id>attach-source</id>
@@ -91,5 +102,34 @@
 			</build>
 		</profile>
 	</profiles>
-
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jreleaser</groupId>
+				<artifactId>jreleaser-maven-plugin</artifactId>
+				<version>1.3.1</version>
+				<configuration>
+					<jreleaser>
+						<signing>
+							<active>ALWAYS</active>
+							<armored>true</armored>
+						</signing>
+						<deploy>
+							<maven>
+								<nexus2>
+									<maven-central>
+										<active>ALWAYS</active>
+										<url>https://s01.oss.sonatype.org/service/local</url>;
+										<closeRepository>false</closeRepository>
+										<releaseRepository>false</releaseRepository>
+										<stagingRepositories>target/staging-deploy</stagingRepositories>
+									</maven-central>
+								</nexus2>
+							</maven>
+						</deploy>
+					</jreleaser>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -1,6 +1,6 @@
 package cn.brk2outside.common.lang.type;
 
-import org.springframework.util.StringUtils;
+import cn.brk2outside.common.lang.StrUtil;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -22,7 +22,7 @@ public class DateUtils {
     static Pattern DATETIME_PATTERN = Pattern.compile("([0-9]{2,4})-([0-9]{1,2})-([0-9]{1,2})\\s+([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})(.[0-9]+)?");
 
     private static Date strToDate(String str) {
-        if (StringUtils.hasText(str)) {
+        if (StrUtil.hasWord(str)) {
             Calendar res = Calendar.getInstance();
             str = str.trim();
             Matcher matcher = DATETIME_PATTERN.matcher(str);
