@@ -137,7 +137,8 @@
 										<closeRepository>false</closeRepository>
 										<releaseRepository>false</releaseRepository>
 										<stagingRepositories>target/staging-deploy</stagingRepositories>
-										<packaging>pom</packaging>
+										<sourceJar>false</sourceJar>
+										<javadocJar>false</javadocJar>
 									</maven-central>
 								</nexus2>
 							</maven>
