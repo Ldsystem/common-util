@@ -27,4 +27,4 @@ jobs:
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           ./mvnw -f ./json/pom.xml -Prelease deploy jreleaser:deploy -DaltDeploymentRepository=local::file:./json/target/staging-deploy
-          ./mvnw -X ./lang/pom.xml -Prelease deploy jreleaser:deploy -DaltDeploymentRepository=local::file:./lang/target/staging-deploy
+          ./mvnw -f ./lang/pom.xml -Prelease deploy jreleaser:deploy -DaltDeploymentRepository=local::file:./lang/target/staging-deploy
