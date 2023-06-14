@@ -11,6 +11,23 @@
     <artifactId>lang</artifactId>
     <version>0.0.1</version>
     <name>lang</name>
+    <developers>
+        <developer>
+            <name>Shenglong</name>
+            <email>liushenglong_8597@outlook.com</email>
+        </developer>
+    </developers>
+    <url>https://github.com/Ldsystem/common-util/lang</url>
+    <scm>
+        <url>https://github.com/Ldsystem/common-util.git</url>
+        <tag>json,type cast</tag>
+    </scm>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://github.com/Ldsystem/common-util/blob/master/LICENSE</url>
+        </license>
+    </licenses>
     <description>lang</description>
     <properties>
         <java.version>1.8</java.version>
