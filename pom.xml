@@ -29,6 +29,7 @@
 		<java.version>8</java.version>
 		<jackson.version>2.15.2</jackson.version>
 		<lombok.version>1.18.28</lombok.version>
+		<project.copyright>Shenglong©[liushenglong_8597@outlook.com]</project.copyright>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -64,6 +65,16 @@
 		<profile>
 			<id>release</id>
 			<build>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+						<includes>
+							<include>javadoc.jar.template</include>
+						</includes>
+						<targetPath>${project.build.directory}/${project.artifactId}-${project.version}-javadoc.jar</targetPath>
+					</resource>
+				</resources>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -80,15 +91,6 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.jreleaser</groupId>
 				<artifactId>jreleaser-maven-plugin</artifactId>
 				<version>1.6.0</version>
@@ -98,6 +100,14 @@
 							<active>ALWAYS</active>
 							<armored>true</armored>
 						</signing>
+						<project>
+							<name>${project.name}</name>
+							<version>${project.version}</version>
+							<authors>
+								<author>Shenglong</author>
+							</authors>
+							<copyright>2023 Shenglong</copyright>
+						</project>
 						<deploy>
 							<maven>
 								<nexus2>
