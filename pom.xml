@@ -107,6 +107,9 @@
 										<closeRepository>false</closeRepository>
 										<releaseRepository>false</releaseRepository>
 										<stagingRepositories>${project.build.directory}/staging-deploy</stagingRepositories>
+										<applyMavenCentralRules>false</applyMavenCentralRules>
+										<sourceJar>false</sourceJar>
+										<javadocJar>false</javadocJar>
 									</maven-central>
 								</nexus2>
 							</maven>
