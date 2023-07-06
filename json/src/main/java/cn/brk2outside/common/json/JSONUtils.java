@@ -41,6 +41,29 @@ public class JSONUtils {
     }
 
     @SneakyThrows
+    public static <T> T readObject(String json, TypeReference<T> typeReference) {
+        return readObject(typeReference, json);
+    }
+
+    /**
+     *  读取泛型对象
+     * @param json              json字符串
+     * @param wrapper           泛型包装类
+     * @param parameterClasses  泛型参数
+     * @return                  泛型对象
+     * @param <T> T            泛型
+     */
+    @SneakyThrows
+    public static <T> T readObject(String json, Class<T> wrapper, Class<?>... parameterClasses) {
+        return readObject(new TypeReference<T>() {
+            @Override
+            public Type getType() {
+                return TypeUtil.parameterizedType(wrapper, parameterClasses);
+            }
+        }, json);
+    }
+
+    @SneakyThrows
     public static <K, V> Map<K, V> readMap(String json) {
         return readObject(new TypeReference<Map<K, V>>() {
         }, json);
