@@ -7,4 +7,5 @@
 module common.lang {
     exports cn.brk2outside.common.lang.reflect;
     exports cn.brk2outside.common.lang.type;
+    exports cn.brk2outside.common.lang.unsafe;
 }
