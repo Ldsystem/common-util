@@ -5,11 +5,11 @@
     <parent>
         <groupId>cn.brk2outside</groupId>
         <artifactId>common-util-parent</artifactId>
-        <version>1.0-jdk17-release</version>
+        <version>1.0.1-jdk17-release</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>json</artifactId>
-    <version>1.0-jdk17-release</version>
+    <version>1.0.1-jdk17-release</version>
     <name>json</name>
     <developers>
         <developer>
