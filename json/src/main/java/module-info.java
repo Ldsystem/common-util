@@ -9,5 +9,5 @@ module common.json {
      requires common.lang;
      requires com.fasterxml.jackson.core;
      requires com.fasterxml.jackson.databind;
-     requires lombok;
+     requires static lombok;
 }
