@@ -5,7 +5,6 @@ import cn.brk2outside.common.lang.unsafe.Unsafe;
 import cn.brk2outside.common.lang.unsafe.UnsafeBiFunction;
 import cn.brk2outside.common.lang.unsafe.UnsafeTriFunction;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -72,7 +71,7 @@ public class JSONUtils {
     public static <K, V> Map<K, V> readMap(String json) {
         return Unsafe.sneakyThrows(
                 (UnsafeBiFunction<? super TypeReference<Map<K, V>>, ? super String, ? extends Map<K, V>>) (ref, str) -> getMapper().readerFor(ref).readValue(str),
-                new TypeReference<Map<K, V>>() {
+                new TypeReference<>() {
                 }, json);
     }
 
@@ -82,8 +81,8 @@ public class JSONUtils {
 
 
     public static <T> List<T> readList(String json, final Class<T> clz) {
-        TypeReference<List<T>> reference = clz == null ? new TypeReference<List<T>>() {
-        } : new TypeReference<List<T>>() {
+        TypeReference<List<T>> reference = clz == null ? new TypeReference<>() {
+        } : new TypeReference<>() {
             @Override
             public Type getType() {
                 return TypeUtil.parameterizedType(List.class, clz);
