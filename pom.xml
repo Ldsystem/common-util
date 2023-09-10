@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.brk2outside</groupId>
 	<artifactId>common-util-parent</artifactId>
-	<version>0.1.5-release</version>
+	<version>1.0-jdk17-release</version>
 	<packaging>pom</packaging>
 	<name>common-util</name>
 	<developers>
@@ -26,10 +26,10 @@
 	</licenses>
 	<description>common-util</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>17</java.version>
 		<jackson.version>2.15.2</jackson.version>
 		<lombok.version>1.18.28</lombok.version>
-		<common-lang.version>0.1.4-release</common-lang.version>
+		<common-lang.version>1.0-jdk17-release</common-lang.version>
 		<project.copyright>Shenglong©[liushenglong_8597@outlook.com]</project.copyright>
 	</properties>
 	<dependencyManagement>
