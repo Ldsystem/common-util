@@ -1,6 +1,6 @@
 package cn.brk2outside.common.lang.type;
 
-import cn.brk2outside.common.lang.StrUtil;
+import cn.brk2outside.common.lang.validation.StrUtil;
 
 import java.text.DecimalFormat;
 import java.util.Optional;
@@ -38,7 +38,8 @@ public class NumUtils {
     public static Optional<Long> parseHexString(String hex) {
         return Optional.ofNullable(hex)
                 .filter(StrUtil::hasWord)
-                .map(str -> str.replaceFirst("0?[Xx]?0*", ""))
+                // 20240516 bug fix, prepend '^' to regexp.
+                .map(str -> str.replaceFirst("^0?[Xx]?0*", ""))
                 .map(x -> Long.parseLong(x, 16));
     }
 

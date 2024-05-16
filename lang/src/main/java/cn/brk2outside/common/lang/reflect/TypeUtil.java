@@ -8,9 +8,9 @@ import java.util.Arrays;
 import java.util.Objects;
 
 /**
+ * create from {@link org.apache.commons.lang3.reflect.TypeUtils}, with minimal dependencies.
+ *
  * @author liushenglong_8597@outlook.com
- * @Date 2023/6/13
- * @Description TypeUtil
  */
 public class TypeUtil {
 
@@ -28,8 +28,7 @@ public class TypeUtil {
     }
 
     private static boolean equals(final ParameterizedType p, final Type t) {
-        if (t instanceof ParameterizedType) {
-            final ParameterizedType other = (ParameterizedType) t;
+        if (t instanceof ParameterizedType other) {
             if (equals(p.getRawType(), other.getRawType()) && equals(p.getOwnerType(), other.getOwnerType())) {
                 return equals(p.getActualTypeArguments(), other.getActualTypeArguments());
             }
@@ -67,17 +66,16 @@ public class TypeUtil {
 
     /**
      * ParameterizedType implementation class.
+     *
      * @since 3.2
      */
-    private static final class ParameterizedTypeImpl implements ParameterizedType {
-        private final Class<?> raw;
-        private final Type useOwner;
-        private final Type[] typeArguments;
-
+    private record ParameterizedTypeImpl(Class<?> raw, Type useOwner,
+                                         Type[] typeArguments) implements ParameterizedType {
         /**
          * Constructor
-         * @param raw type
-         * @param useOwner owner type to use, if any
+         *
+         * @param raw           type
+         * @param useOwner      owner type to use, if any
          * @param typeArguments formal type arguments
          */
         private ParameterizedTypeImpl(final Class<?> raw, final Type useOwner, final Type[] typeArguments) {
@@ -115,7 +113,7 @@ public class TypeUtil {
          */
         @Override
         public boolean equals(final Object obj) {
-            return obj == this || obj instanceof ParameterizedType && this == obj;
+            return obj == this || obj instanceof ParameterizedType && TypeUtil.equals(this, (ParameterizedType) obj);
         }
 
         /**
