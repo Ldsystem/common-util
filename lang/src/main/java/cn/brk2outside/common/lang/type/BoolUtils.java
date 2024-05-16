@@ -1,6 +1,6 @@
 package cn.brk2outside.common.lang.type;
 
-import cn.brk2outside.common.lang.StrUtil;
+import cn.brk2outside.common.lang.validation.StrUtil;
 
 import java.util.Arrays;
 import java.util.HashSet;

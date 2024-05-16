@@ -1,4 +1,4 @@
-package cn.brk2outside.common.lang;
+package cn.brk2outside.common.lang.validation;
 
 /**
  * @author liushenglong_8597@outlook.com
@@ -11,7 +11,8 @@ public class StrUtil {
      * whether given string has word chars
      */
     public static boolean hasWord(String str) {
-        return str != null && str.matches(".*\\w.*");
+        // 20240516, replace regexp search with java17 string api.
+        return str != null && !str.isBlank();
     }
 
 }

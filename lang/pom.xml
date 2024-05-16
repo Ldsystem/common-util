@@ -9,7 +9,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>lang</artifactId>
-    <version>1.0.2-jdk17-release</version>
     <name>lang</name>
     <developers>
         <developer>
