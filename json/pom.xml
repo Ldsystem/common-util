@@ -9,6 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>json</artifactId>
+    <version>1.0.3-jdk17-prerelease</version>
     <name>json</name>
     <developers>
         <developer>
