@@ -2,7 +2,7 @@ package cn.brk2outside.common.lang.type;
 
 import cn.brk2outside.common.lang.validation.StrUtil;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 import java.util.Optional;
 
 public class NumUtils {
@@ -28,7 +28,7 @@ public class NumUtils {
                 .map(Object::toString)
                 .map(str -> {
                     try {
-                        return new DecimalFormat().parse(str);
+                        return new BigDecimal(str);
                     } catch (Exception ignore) {
                     }
                     return null;

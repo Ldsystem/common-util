@@ -5,11 +5,11 @@
     <parent>
         <groupId>cn.brk2outside</groupId>
         <artifactId>common-util-parent</artifactId>
-        <version>1.0.3-jdk17-release</version>
+        <version>1.0.3.2-jdk17-release</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>lang</artifactId>
-    <version>1.0.3.1-jdk17-release</version>
+    <version>1.0.3.2-jdk17-release</version>
     <name>lang</name>
     <developers>
         <developer>
