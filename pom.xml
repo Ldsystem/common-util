@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.brk2outside</groupId>
 	<artifactId>common-util-parent</artifactId>
-	<version>1.0.3.3-jdk17-release</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>common-util</name>
 	<developers>
@@ -29,7 +29,6 @@
 		<java.version>17</java.version>
 		<jackson.version>2.15.2</jackson.version>
 		<lombok.version>1.18.28</lombok.version>
-		<common-lang.version>1.0.3.3-jdk17-release</common-lang.version>
 		<project.copyright>Shenglong©[liushenglong_8597@outlook.com]</project.copyright>
 	</properties>
 	<dependencyManagement>
@@ -37,7 +36,7 @@
 			<dependency>
 				<groupId>cn.brk2outside</groupId>
 				<artifactId>lang</artifactId>
-				<version>${common-lang.version}</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -62,11 +61,33 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>maven-central-snapshots</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>maven-central-release</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+
 	<profiles>
 		<profile>
 			<id>release</id>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.6.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<publishingServerId>maven-central-release</publishingServerId>
+							<tokenAuth>true</tokenAuth>
+							<autoPublish>true</autoPublish>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
@@ -74,6 +95,27 @@
 						<configuration>
 							<argLine>-Dfile.encoding=UTF-8</argLine>
 						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>3.2.7</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+								<configuration>
+									<!-- Prevent gpg from using pinentry programs -->
+									<gpgArguments>
+										<arg>--pinentry-mode</arg>
+										<arg>loopback</arg>
+									</gpgArguments>
+								</configuration>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>
