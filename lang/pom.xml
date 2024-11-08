@@ -5,7 +5,7 @@
     <parent>
         <groupId>cn.brk2outside</groupId>
         <artifactId>common-util-parent</artifactId>
-        <version>${revision}</version>
+        <version>1.0.3.4-jdk17-release</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>lang</artifactId>
@@ -29,21 +29,9 @@
     </licenses>
     <description>lang</description>
     <properties>
-        <revision>0.0.1-SNAPSHOT</revision>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>maven-central-snapshots</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>maven-central-release</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
-    </distributionManagement>
 
     <profiles>
         <profile>
@@ -56,9 +44,9 @@
                         <version>0.6.0</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <publishingServerId>maven-central-release</publishingServerId>
-                            <tokenAuth>true</tokenAuth>
+                            <publishingServerId>central</publishingServerId>
                             <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -134,44 +122,6 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jreleaser</groupId>
-                <artifactId>jreleaser-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <configuration>
-                    <jreleaser>
-                        <signing>
-                            <active>ALWAYS</active>
-                            <armored>true</armored>
-                        </signing>
-                        <project>
-                            <name>${project.name}</name>
-                            <version>${project.version}</version>
-                            <authors>
-                                <author>Shenglong</author>
-                            </authors>
-                            <copyright>2023©️Shenglong</copyright>
-                        </project>
-                        <deploy>
-                            <maven>
-                                <nexus2>
-                                    <maven-central>
-                                        <active>ALWAYS</active>
-                                        <url>https://s01.oss.sonatype.org/service/local</url>
-                                        <sign>true</sign>
-                                        <closeRepository>true</closeRepository>
-                                        <releaseRepository>true</releaseRepository>
-                                        <stagingRepositories>${project.build.directory}/staging-deploy</stagingRepositories>
-                                        <applyMavenCentralRules>true</applyMavenCentralRules>
-                                        <sourceJar>true</sourceJar>
-                                        <javadocJar>true</javadocJar>
-                                    </maven-central>
-                                </nexus2>
-                            </maven>
-                        </deploy>
-                    </jreleaser>
                 </configuration>
             </plugin>
         </plugins>

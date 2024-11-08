@@ -36,14 +36,18 @@ jobs:
 
     # publish common-lang
     - name: Publish lang
-      run: mvn -f ./lang/pom.xml -P release --batch-mode deploy -Drevision=${{ github.event.release.tag_name }} -DskipTests
+      run: |
+        mvn -f ./lang/pom.xml versions:update-parent
+        mvn -f ./lang/pom.xml -P release --batch-mode deploy -DskipTests
       env: 
         MAVEN_USERNAME: ${{ vars.MVN_CENTRAL_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MVN_CENTRAL_PASSWORD }}
         MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_SIGNING_KEY_PASSPHRASE }}
     # publish common-json
-    - name: Pulish json
-      run: mvn -f ./json/pom.xml -P release --batch-mode deploy -Drevision=${{ github.event.release.tag_name }} -DskipTests
+    - name: Publish json
+      run: |
+        mvn -f ./json/pom.xml versions:update-parent
+        mvn -f ./json/pom.xml -P release --batch-mode deploy -DskipTests
       env: 
         MAVEN_USERNAME: ${{ vars.MVN_CENTRAL_USERNAME }}
         MAVEN_PASSWORD: ${{ secrets.MVN_CENTRAL_PASSWORD }}
