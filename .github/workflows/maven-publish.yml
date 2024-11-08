@@ -25,7 +25,9 @@ jobs:
 
     # set version
     - name: Set parent version
-      run: mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+      run: |
+        mvn versions:set -DnewVersion=${{ github.event.release.tag_name }}
+        mvn versions:set-property -Dproperty=common.lang.version -DnewVersion=${{ github.event.release.tag_name }}
     # publish parent pom
     - name: Publish parent POM
       run: mvn -P release --batch-mode deploy -DskipTests

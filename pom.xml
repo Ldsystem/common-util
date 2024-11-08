@@ -29,6 +29,7 @@
 		<java.version>17</java.version>
 		<jackson.version>2.15.2</jackson.version>
 		<lombok.version>1.18.28</lombok.version>
+		<common.lang.version>1.0.3.4-jdk17-release</common.lang.version>
 		<project.copyright>Shenglong©[liushenglong_8597@outlook.com]</project.copyright>
 	</properties>
 	<dependencyManagement>
@@ -36,7 +37,7 @@
 			<dependency>
 				<groupId>cn.brk2outside</groupId>
 				<artifactId>lang</artifactId>
-				<version>${project.version}</version>
+				<version>${common.lang.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
